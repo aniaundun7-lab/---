@@ -1,0 +1,38 @@
+import UIKit
+
+var balance = 0.0
+let valuta = "CNY"
+
+var startPrice: Double? = nil
+
+for index in 0...10  {
+    let price = Double.random(in: 11...16)
+    let bot = Int.random(in: 0...2)
+    
+    if bot == 0 {
+        print("\(price) \(valuta) - покупка")
+        
+        if startPrice == nil {
+            startPrice = price
+        }
+    }
+    
+    if bot == 1 {
+        print("\(price) \(valuta) - игнорирование")
+    }
+    
+    if bot == 2 {
+        print("\(price) \(valuta) - продажа")
+        
+        if let openPrice = startPrice {
+            let income = price - openPrice
+            balance += income;
+            
+            print("FROM \(openPrice) -> TO \(price), INCOME = \(income)")
+        }
+        startPrice = nil;
+    }
+   
+}
+
+print("Итоговый баланс: \(balance) \(valuta)")
