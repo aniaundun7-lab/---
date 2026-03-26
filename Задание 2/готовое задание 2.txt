@@ -1,3 +1,0 @@
-// Swift code goes here
-let greeting = "Hello, World!"
-print(greeting)
